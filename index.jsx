@@ -1,20 +1,15 @@
-// Define ADD, addMessage(), messageReducer(), and store here:
-const ADD ='ADD';
-const addMessage= message => {
-  return{
-type: ADD,
-message
-  };
-};
-const messageReducer = (previousState = [], action) => {
-  switch (action.type){
-    case ADD:
-    return [...previousState, action.message];
-    break;
-    default:
-    return previousState;
-
+const addMessage = (message) => {
+  return {
+    type: 'ADD',
+    message: message
   }
 };
 
-const store = Redux.createStore(messageReducer);
+// Change code below this line
+const mapDispatchToProps = (dispatch) => {
+  return {
+    submitNewMessage: (message) => {
+      dispatch(addMessage(message))
+    }
+  }
+}
